@@ -37,13 +37,13 @@ public class UserController {
 //        return new ResponseEntity<>(Status.SUCCESS, HttpStatus.OK.value(), userPage);
 //    }
 	
-	@ApiOperation(value = "Get list of Users", produces = "application/json")
-	@GetMapping  
-	private List<UserDto> getAllUsers()   
-	{  
-		throw new ApiRequestException("cannot get");
-	 //return userService.getAllUserDtos();  
-	}
+//	@ApiOperation(value = "Get list of Users", produces = "application/json")
+//	@GetMapping  
+//	private List<UserDto> getAllUsers()   
+//	{  
+//		//throw new ApiRequestException("cannot get");
+//		//return new ResponseEntity<>(Status.SUCCESS, HttpStatus.OK.value(), users)
+//	}
 	
 	@ApiOperation(value = "Get an User by USER_ID", produces = "application/json")
 	@GetMapping("/{userid}")  
