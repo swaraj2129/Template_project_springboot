@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 public class FilterConfig {
 
      @Bean
-    public FilterRegistrationBean<RequestResponseLoggingFilter> loggingFilter() {
-        FilterRegistrationBean<RequestResponseLoggingFilter> registrationBean = new FilterRegistrationBean<>();
+    public FilterRegistrationBean<AuthFilter> loggingFilter() {
+        FilterRegistrationBean<AuthFilter> registrationBean = new FilterRegistrationBean<>();
 
-        registrationBean.setFilter(new RequestResponseLoggingFilter());
+        registrationBean.setFilter(new AuthFilter());
 
         registrationBean.addUrlPatterns("/api/v1/*");
 

@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/user")
 public class UserController {
 
-	
-	@Autowired  
-	UserService userService;  
+
+	@Autowired
+	UserService userService;
 //	@GetMapping
 //    public ResponseEntity<UserPageDto> getUsers(@RequestParam(required = false, value = "pageNo") Integer pageNo,
 //            @RequestParam(required = false, value = "pageSize") Integer pageSize,
@@ -36,39 +36,39 @@ public class UserController {
 //        UserPageDto userPage = userPaginationService.getPageDto(pageNo, pageSize, sortBy, asc);
 //        return new ResponseEntity<>(Status.SUCCESS, HttpStatus.OK.value(), userPage);
 //    }
-	
+
 //	@ApiOperation(value = "Get list of Users", produces = "application/json")
-//	@GetMapping  
-//	private List<UserDto> getAllUsers()   
-//	{  
+//	@GetMapping
+//	private List<UserDto> getAllUsers()
+//	{
 //		//throw new ApiRequestException("cannot get");
 //		//return new ResponseEntity<>(Status.SUCCESS, HttpStatus.OK.value(), users)
 //	}
-	
+
 	@ApiOperation(value = "Get an User by USER_ID", produces = "application/json")
-	@GetMapping("/{userid}")  
-	private UserDto getUserDtoById(@PathVariable("userid") long userid)   
-	{  
-	return userService.getUserDtoById(userid);  
+	@GetMapping("/{userid}")
+	private UserDto getUserDtoById(@PathVariable("userid") long userid)
+	{
+	return userService.getUserDtoById(userid);
 	}
-	
+
 	@ApiOperation(value = "Create an User", produces = "application/json")
 	@PostMapping
-	private UserDto createUserDto(@RequestBody UserDto user)   
-	{ 
+	private UserDto createUserDto(@RequestBody UserDto user)
+	{
 		System.out.print(((Object)user.getId()).getClass().getSimpleName());
-	userService.createUser(user);  
-	return user;  
+	userService.createUser(user);
+	return user;
 	}
-	
+
 	@ApiOperation(value = "Update an User", produces = "application/json")
 	@PutMapping
-	private UserDto updaUserDto(@RequestBody UserDto user)
+	private UserDto updateUserDto(@RequestBody UserDto user)
 	{
 		userService.update(user);
 		return user;
 	}
-	
+
 	@ApiOperation(value = "Delete an User", produces = "application/json")
 	@DeleteMapping("/{userid}")
 	private void deleteUser(@PathVariable("userid") long userid) {
