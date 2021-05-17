@@ -1,3 +1,4 @@
+/*
 package com.example.myapp.filter;
 
 import java.io.IOException;
@@ -19,7 +20,9 @@ public class AuthFilter implements Filter {
     AuthService authService;
 	org.slf4j.Logger LOG = LoggerFactory.getLogger(AuthFilter.class);
 
-/*    @Override
+*/
+/*
+    @Override
     public void doFilter(
       ServletRequest request,
       ServletResponse response,
@@ -27,19 +30,23 @@ public class AuthFilter implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        LOG.info(
+           LOG.info(
           "Logging Request  {} : {}", req.getMethod(),
           req.getRequestURI());
         chain.doFilter(request, response);
         LOG.info(
           "Logging Response :{}",
           res.getContentType());
-    }*/
+    }
+
+*//*
+
 
     public static final String AUTHENTICATION_HEADER = "Authorization";
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        System.out.println("inat");
         if (request instanceof HttpServletRequest) {
             final HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             final String authCredentials = httpServletRequest.getHeader(AUTHENTICATION_HEADER);
@@ -57,13 +64,16 @@ public class AuthFilter implements Filter {
             }
         }
     }
-
-    public void init(FilterConfig filterConfig) throws ServletException {
+*/
+/*    public void init(FilterConfig filterConfig) throws ServletException {
         // No Implementation
-    }
+    }*//*
+
+
 
     public void destroy() {
         // No Implementation
     }
 
 }
+*/
