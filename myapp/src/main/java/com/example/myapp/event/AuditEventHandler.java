@@ -8,9 +8,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 
 @Component
 public class AuditEventHandler {
@@ -25,7 +23,7 @@ public class AuditEventHandler {
 
     @EventListener
     @Async
-    public void handleEvent(AuditEvent<SecurityLogData> auditEvent) throws JsonProcessingException {
+    public void handleEvent(AuditEvent<SecurityLogData> auditEvent) throws IOException {
         //saving security to log to file
         saveTextToFile(new ObjectMapper()
                 .writerWithDefaultPrettyPrinter()
@@ -36,15 +34,15 @@ public class AuditEventHandler {
      *
      * @param text from auditEvent that has to be saved in file
      */
-    private void saveTextToFile(String text) {
+    private void saveTextToFile(String text) throws IOException {
 
         String filePathAndName =filePath;
-        try (PrintStream out = new PrintStream(new FileOutputStream(filePathAndName))) {
-            out.print(text);
-            out.flush();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        File file = new File(filePath);
+        FileWriter fileWriter = new FileWriter(file, true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write(text);
+        bufferedWriter.close();
+        fileWriter.close();
 
     }
 }

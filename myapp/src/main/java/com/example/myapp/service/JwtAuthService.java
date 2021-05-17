@@ -26,7 +26,7 @@ public class JwtAuthService {
      * @return status of authentication
      */
     public boolean check(UserDetail username){
-        return username.uname.equals("user") && username.password.equals("password");
+        return username.getUname().equals("user") && username.getPassword().equals("password");
     }
 
     /**

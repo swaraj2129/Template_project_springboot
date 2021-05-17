@@ -1,6 +1,7 @@
 package com.example.myapp.exception;
 
 import com.example.myapp.entity.ErrorDetail;
+import com.example.myapp.entity.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -28,7 +29,7 @@ public class UserExceptionHandler {
         UserErrorResponse error = new UserErrorResponse(errorDetails);
 
         //return ResponseEntity
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<UserErrorResponse>(error, HttpStatus.NOT_FOUND);
     }
 
     // Add another exception handler .... to catch any exception (catch all)

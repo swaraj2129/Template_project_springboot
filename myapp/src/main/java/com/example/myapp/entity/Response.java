@@ -1,6 +1,8 @@
 package com.example.myapp.entity;
 
 
+import org.springframework.http.HttpStatus;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,6 +27,19 @@ public class Response<T> implements Serializable {
     public Response(List<ErrorDetail> errorDetails){
         this.errorDetails = errorDetails;
     }
+
+//    public Response(T entity, HttpStatus notFound) {
+//        this.entity = entity;
+//        this.status = notFound.value();
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setErrorDetails(List<ErrorDetail> errorDetails) {
+        this.errorDetails = errorDetails;
+    }
+//    }
 
     public T getEntity() {
         return entity;

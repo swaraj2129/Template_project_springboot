@@ -1,8 +1,8 @@
 package com.example.myapp.entity;
 
 public class UserDetail {
-    public String uname;
-    public String password;
+    private String uname;
+    private String password;
 
     public UserDetail(){
 

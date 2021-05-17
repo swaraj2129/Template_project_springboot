@@ -33,7 +33,7 @@ public class AuthController {
     public ResponseEntity<String> register(@RequestBody @Valid UserDetail userDetail) {
 
         if (jwtAuthService.check(userDetail)) {
-            String token = jwtAuthService.onSuccessfulAuthentication(userDetail.uname, userDetail.password);
+            String token = jwtAuthService.onSuccessfulAuthentication(userDetail.getUname(), userDetail.getPassword());
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.set("Bearer",
                     token);

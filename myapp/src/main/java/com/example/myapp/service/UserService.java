@@ -19,7 +19,7 @@ public class UserService {
 	UserRepository userRepository;  
 	
 	
-	public Response<List<User>> getAllUserDtos()
+	public Response<List<User>> getAllUsers()
 	{  
 	List<User> users = new ArrayList<User>();
 	userRepository.findAll().forEach(user -> users.add(user));
