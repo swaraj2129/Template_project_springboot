@@ -1,5 +1,6 @@
 package com.example.myapp.controller;
 
+import com.example.myapp.entity.Course;
 import com.example.myapp.entity.Response;
 import com.example.myapp.entity.User;
 import com.example.myapp.service.UserService;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Api(tags = "User CRUD API")
@@ -30,6 +33,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @ApiOperation(value = "Find all users")
     @ApiResponses(value =
@@ -46,19 +50,21 @@ public class UserController {
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
 			@ApiResponse(code = 401, message = "You are not authorized to perform this action on the resource")})
 
-	@GetMapping("/{userid}")
-    public Response<User> getUserDtoById(@PathVariable("userid") long userid) {
-        return userService.getUserDtoById(userid);
+	@GetMapping("/{userId}")
+    public Response<User> getUserById(@PathVariable("userId") long userId) {
+        return userService.getUserById(userId);
     }
 
     @ApiOperation(value = "Create an User", produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "User created successfully"),
 			@ApiResponse(code = 401, message = "You are not authorized to perform this action on the resource") })
     @PostMapping
-    public Response<User> createUser(@RequestBody @Valid User user) {
+    public Response<User> createUser(@RequestBody @Valid User user) throws IOException {
+
         return userService.createUser(user);
 
     }
+
 
 
     @ApiOperation(value = "Update an User", produces = "application/json")
@@ -75,7 +81,7 @@ public class UserController {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "User deleted successfully"),
 			@ApiResponse(code = 401, message = "You are not authorized to perform this action on the resource") })
 	@DeleteMapping("/{userid}")
-    public String deleteUser(@PathVariable("userid") long userid) {
+    public Response<User> deleteUser(@PathVariable("userid") long userid) {
         return userService.delete(userid);
     }
 }

@@ -24,7 +24,4 @@ public class BasicAuthFilterConfig {
         return registrationBean;
     }
 
-//    public NotAuthorizedUtil getAuthorizationBean(){
-//        return new NotAuthorizedUtil();
-//    }
 }

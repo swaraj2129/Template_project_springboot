@@ -20,7 +20,7 @@ public class JwtAuthFilterConfig {
 		   FilterRegistrationBean < JwtAuthenticationFilter > registrationBean = new FilterRegistrationBean();
 		  //JwtAuthenticationFilter customURLFilter = new JwtAuthenticationFilter();
 		  registrationBean.setFilter(jwtAuthenticationFilter);
-		  registrationBean.addUrlPatterns("/api/v1/user/*");
+		  registrationBean.addUrlPatterns("/api/v1/*");
 		  return registrationBean;
 	}
 

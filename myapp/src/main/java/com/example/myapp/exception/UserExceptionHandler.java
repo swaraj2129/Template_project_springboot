@@ -28,8 +28,7 @@ public class UserExceptionHandler {
         errorDetails.add(new ErrorDetail(HttpStatus.NOT_FOUND.value(),exception.getMessage(), LocalDateTime.now().toString()));
         UserErrorResponse error = new UserErrorResponse(errorDetails);
 
-        //return ResponseEntity
-        return new ResponseEntity<UserErrorResponse>(error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
     // Add another exception handler .... to catch any exception (catch all)

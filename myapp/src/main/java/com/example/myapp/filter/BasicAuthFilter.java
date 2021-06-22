@@ -25,7 +25,7 @@ public class BasicAuthFilter implements Filter {
      */
 
     @Autowired
-    NotAuthorizedUtil notAuthorizedUtil;
+    private NotAuthorizedUtil notAuthorizedUtil;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

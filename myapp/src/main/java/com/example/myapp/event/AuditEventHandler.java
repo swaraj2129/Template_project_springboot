@@ -36,7 +36,6 @@ public class AuditEventHandler {
      */
     private void saveTextToFile(String text) throws IOException {
 
-        String filePathAndName =filePath;
         File file = new File(filePath);
         FileWriter fileWriter = new FileWriter(file, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

@@ -23,7 +23,7 @@ public class JwtAuthenticationFilter implements Filter {
      */
 
     @Autowired
-    NotAuthorizedUtil notAuthorizedUtil;
+    private NotAuthorizedUtil notAuthorizedUtil;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
